@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FinalTest</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url('https://www.allianztravelinsurance.com/v_1557948389077/media/travel/planning/top-reasons-to-travel-by-bus.jpg');
+            background-size: cover; 
+            background-position: center center;
+            background-attachment: fixed; 
+            
+            margin: 0;
+            padding: 0;
+            height: 100vh; 
+        }
+
+        
+
+    </style>
+    <title>Background Image Example</title>
+</head>
+<body>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                height: 100vh;
+                background-image: url('https://www.allianztravelinsurance.com/v_1557948389077/media/travel/planning/top-reasons-to-travel-by-bus.jpg');
+                background-size: cover;
+                background-position: center center;
+                background-attachment: fixed;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+    
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2;
+            }
+    
+            .login-container,
+            .calendar-container,
+            .modal-container {
+                text-align: center;
+                background-color: rgba(0, 0, 0, 0.5);
+                padding: 20px;
+                border-radius: 10px;
+                color: white;
+            }
+    
+            .calendar-container,
+            .modal-container {
+                display: none;
+            }
+    
+            select,
+            input {
+                padding: 10px;
+                margin: 10px;
+            }
+    
+            button {
+                padding: 10px 20px;
+                background-color: #3498db;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+    
+            /* Styles for the calendar modal */
+            .modal {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                z-index: 1;
+            }
+    
+            .modal-content {
+                width: 80%;
+                margin: auto;
+            }
+    
+            .close {
+                color: white;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+    
+            /* Styles for the calendar pop-up modal */
+            #calendarPopup {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(0, 0, 0, 0.7);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                z-index: 3;
+            }
+    
+            #calendarPopup select,
+            #calendarPopup input {
+                padding: 10px;
+                margin: 10px;
+            }
+    
+            #calendarPopup button {
+                padding: 10px 20px;
+                background-color: #3498db;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+    
+            /* Styles for the new footer */
+            footer {
+                position: fixed;
+                bottom: 10px;
+                left: 10px;
+                color: white;
+            }
+    
+            .get-calendar-button {
+                padding: 10px 20px;
+                background-color: #3498db;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        </style>
+        <title>Login and Travel Calendar</title>
+    </head>
+    
+    <body>
+    
+        <div class="overlay" id="overlay">
+            <div class="login-container" id="loginContainer">
+                <h1>Sign In</h1>
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username">
+    
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password">
+    
+                <br>
+    
+                <button onclick="signIn()">Sign In</button>
+            </div>
+        </div>
+    
+        <div class="calendar-container" id="calendarContainer">
+            <h1>Travel Calendar</h1>
+    
+            <label for="city">Select a City:</label>
+            <select id="city">
+                <option value="new-york">New York</option>
+                <option value="paris">Paris</option>
+                <option value="tokyo">Tokyo</option>
+                <option value="london">London</option>
+                <option value="sydney">Sydney</option>
+                <!-- Add more cities as needed -->
+            </select>
+    
+            <label for="month">Select a Month:</label>
+            <select id="month" onchange="updateDays()">
+                <option value="january">January</option>
+                <option value="february">February</option>
+                <option value="march">March</option>
+                <option value="april">April</option>
+                <option value="may">May</option>
+                <option value="june">June</option>
+                <option value="july">July</option>
+                <option value="august">August</option>
+                <option value="september">September</option>
+                <option value="october">October</option>
+                <option value="november">November</option>
+                <option value="december">December</option>
+            </select>
+    
+            <label for="day">Select a Day:</label>
+            <select id="day">
+                <!-- Day options will be dynamically generated using JavaScript -->
+            </select>
+    
+            <br>
+    
+            <button onclick="openCalendar()">Plan Travel</button>
+        </div>
+    
+        <div class="modal" id="myModal">
+            <div class="modal-content">
+                <span class="close" onclick="closeCalendar()">&times;</span>
+                <div id="calendar"></div>
+                <button class="modal-button" onclick="openModal()">Plan Travel</button>
+            </div>
+        </div>
+    
+        <!-- New Calendar Popup Modal -->
+        <div class="overlay" id="calendarPopup">
+            <div class="modal-container" id="calendarPopupContainer">
+                <h1>Choose Your Travel Date</h1>
+    
+                <label for="destination">Select a Destination:</label>
+                <select id="destination">
+                    <option value="new-york">New York</option>
+                    <option value="paris">Paris</option>
+                    <option value="tokyo">Tokyo</option>
+                    <option value="london">London</option>
+                    <option value="sydney">Sydney</option>
+                    <!-- Add more destinations as needed -->
+                </select>
+    
+                <label for="popupMonth">Select a Month:</label>
+                <select id="popupMonth" onchange="updatePopupDays()">
+                    <option value="january">January</option>
+                    <option value="february">February</option>
+                    <option value="march">March</option>
+                    <option value="april">April</option>
+                    <option value="may">May</option>
+                    <option value="june">June</option>
+                    <option value="july">July</option>
+                    <option value="august">August</option>
+                    <option value="september">September</option>
+                    <option value="october">October</option>
+                    <option value="november">November</option>
+                    <option value="december">December</option>
+                </select>
+    
+                <label for="popupDay">Select a Day:</label>
+                <select id="popupDay">
+                    <!-- Day options will be dynamically generated using JavaScript -->
+                </select>
+    
+                <br>
+    
+                <button onclick="planTravel()">Plan Travel</button>
+            </div>
+        </div>
+    
+        <script>
+            function signIn() {
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+    
+                // Check if the entered username is either "admin" or "guest"
+                if (username === 'admin' || username === 'guest') {
+                    // If the username is "guest", allow access without checking the password
+                    if (username === 'guest') {
+                        // Hide the overlay
+                        document.getElementById('overlay').style.display = 'none';
+    
+                        // Show the entire body
+                        document.body.style.overflow = 'auto';
+                    } else if (password === 'admin') {
+                        // If the username is "admin", check the password
+                        // Hide the overlay
+                        document.getElementById('overlay').style.display = 'none';
+    
+                        // Show the entire body
+                        document.body.style.overflow = 'auto';
+                    } else {
+                        alert('Invalid credentials. Please try again.');
+                    }
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            }
+    
+            function updateDays() {
+                var monthSelect = document.getElementById('month');
+                var daySelect = document.getElementById('day');
+                var selectedMonth = monthSelect.value;
+    
+                // Clear previous options
+                daySelect.innerHTML = '';
+    
+                // Dynamically generate day options based on the selected month
+                var daysInMonth = new Date(new Date().getFullYear(), monthSelect.selectedIndex + 1, 0).getDate();
+                for (var i = 1; i <= daysInMonth; i++) {
+                    var option = document.createElement('option');
+                    option.value = i;
+                    option.text = i;
+                    daySelect.add(option);
+                }
+            }
+    
+            // Function to update days in the popup
+            function updatePopupDays() {
+                var monthSelect = document.getElementById('popupMonth');
+                var daySelect = document.getElementById('popupDay');
+                var selectedMonth = monthSelect.value;
+    
+                // Clear previous options
+                daySelect.innerHTML = '';
+    
+                // Dynamically generate day options based on the selected month
+                var daysInMonth = new Date(new Date().getFullYear(), monthSelect.selectedIndex + 1, 0).getDate();
+                for (var i = 1; i <= daysInMonth; i++) {
+                    var option = document.createElement('option');
+                    option.value = i;
+                    option.text = i;
+                    daySelect.add(option);
+                }
+            }
+    
+            function openCalendar() {
+                // Show the calendar modal
+                document.getElementById('myModal').style.display = 'block';
+            }
+    
+            function closeCalendar() {
+                // Close the calendar modal
+                document.getElementById('myModal').style.display = 'none';
+            }
+    
+            function openModal() {
+                // Show the confirmation modal
+                document.getElementById('modalContainer').style.display = 'block';
+            }
+    
+            // New function to open calendar pop-up
+            function openCalendarPopup() {
+                document.getElementById('calendarPopup').style.display = 'block';
+            }
+    
+            function planTravel() {
+                // Your logic for planning travel goes here
+                // For now, let's close the pop-up
+                document.getElementById('calendarPopup').style.display = 'none';
+            }
+        </script>
+    
+    </body>
+    
+    </html>
